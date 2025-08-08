@@ -1,0 +1,17 @@
+[
+  { "modelo": "Urban Basic", "color": "Negro", "talla": "M", "material": "Algodon 100", "precio": 12.5, "stock": 20 },
+  { "modelo": "Urban Basic", "color": "Blanco", "talla": "L", "material": "Algodon 100", "precio": 12.5, "stock": 18 },
+  { "modelo": "Sport DryFit", "color": "Azul Marino", "talla": "M", "material": "Poliester DryFit", "precio": 14, "stock": 25 },
+  { "modelo": "Sport DryFit", "color": "Gris", "talla": "S", "material": "Poliester DryFit", "precio": 14, "stock": 12 },
+  { "modelo": "Classic Pocket", "color": "Verde Oliva", "talla": "L", "material": "Algodon Peinado", "precio": 15, "stock": 10 },
+  { "modelo": "Classic Pocket", "color": "Negro", "talla": "M", "material": "Algodon Peinado", "precio": 15, "stock": 8 },
+  { "modelo": "Oversize Street", "color": "Blanco", "talla": "XL", "material": "Algodon Orgánico", "precio": 16.5, "stock": 15 },
+  { "modelo": "Oversize Street", "color": "Negro", "talla": "L", "material": "Algodon Orgánico", "precio": 16.5, "stock": 14 },
+  { "modelo": "Retro 90s", "color": "Amarillo", "talla": "M", "material": "Algodon/Poliester", "precio": 13, "stock": 9 },
+  { "modelo": "Retro 90s", "color": "Rojo", "talla": "L", "material": "Algodon/Poliester", "precio": 13, "stock": 7 },
+  { "modelo": "Minimal Line", "color": "Gris Claro", "talla": "M", "material": "Algodon 100", "precio": 12, "stock": 11 },
+  { "modelo": "Minimal Line", "color": "Azul", "talla": "S", "material": "Algodon 100", "precio": 12, "stock": 13 },
+  { "modelo": "Graphic Skull", "color": "Negro", "talla": "L", "material": "Algodon Peinado", "precio": 17, "stock": 5 },
+  { "modelo": "Graphic Skull", "color": "Blanco", "talla": "M", "material": "Algodon Peinado", "precio": 17, "stock": 6 },
+  { "modelo": "Tropical Vibes", "color": "Turquesa", "talla": "M", "material": "Algodon/Poliester", "precio": 15.5, "stock": 10 }
+]
