@@ -52,3 +52,31 @@ export const updateProduct = async (id, updateProductData) => {
     return null;
   }
 };
+
+//POST
+export const createProduct = async (newProduct) => {
+  try {
+    // referencia al documento con tu id
+    const docRef = doc(productsCollection, newProduct.id);
+
+    // setear el documento
+    await setDoc(docRef, newProduct);
+
+    // const docRef = await addDoc(productsCollection, newProduct);
+    return { id: docRef.id, ...newProduct };
+  } catch (error) {
+    console.error(error);
+  }
+};
+
+//DELETE
+export const deleteproduct = async (id) => {
+  try {
+    const docRef = doc (productsCollection, id);
+    await deleteDoc(docRef);
+    return true;
+  } catch (error) {
+    console.error(error);
+    return false;
+  }
+};

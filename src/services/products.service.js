@@ -11,3 +11,11 @@ export const getProductById = async (id) => {
 export const updateProduct = async (id, updateProductData) => {
     return await Model.updateProduct(id, updateProductData);
 }
+
+export const createProduct = async (newProduct) => {
+    return await Model.createProduct(newProduct);
+}
+
+export const deleteProduct = async (id) => {
+    return await Model.deleteproduct(id);
+}

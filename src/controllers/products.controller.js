@@ -32,3 +32,22 @@ export const updateProduct = async (req, res) => {
         ruta: req.originalUrl})
     }
 };
+
+export const createProduct = async (req, res) => {
+    const newProduct = req.body;
+    const createProduct = await Service.createProduct(newProduct);
+    res.status(201).json(createProduct);
+}
+
+export const deleteProduct = async (req, res) => {
+    const {id} = req.params;
+    const deleteProduct = await Service.deleteProduct(id);
+    if (deleteProduct) {
+        res.json({ message: "Producto eliminado con exito"})
+    } else {
+        res.status(404).json({
+        status: 404,
+        mensaje: '😥 Producto no encontrado ❌',
+        ruta: req.originalUrl})
+    }
+};

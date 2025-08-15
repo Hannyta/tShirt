@@ -4,9 +4,9 @@ const router = Router();
 import {
     getAllProducts,
      getProductById,
-    /*createProduct,*/
+    createProduct,
     updateProduct,
-    /* deleteProduct */
+    deleteProduct
 } from "../controllers/products.controller.js";
 
 import { auth } from "../middlewares/auth.middlewares.js";
@@ -22,5 +22,13 @@ import { auth } from "../middlewares/auth.middlewares.js";
 //Ruta para editar algun producto en el servidor
 
     router.put("/products/:id", auth, updateProduct);
+
+//Ruta para enviar datos al servidor, crear un nuevo producto
+
+    router.post("/products", auth, createProduct);
+
+//Ruta para eliminar productos en el sevidor
+
+    router.delete("/products/:id", auth, deleteProduct);
     
 export default router; 
