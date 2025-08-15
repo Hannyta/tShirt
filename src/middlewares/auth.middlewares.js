@@ -1,14 +1,29 @@
 import jwt from "jsonwebtoken";
 
 export const auth = (req, res, next) => {
-  const token = req.headers["authorization"]?.split(" ")[1];
-  if (!token) return res.sendStatus(401);
+  try {
+    const authHeader = req.headers["authorization"];
 
-  jwt.verify(token, process.env.JWT_SECRET, (err) => {
-    if (err) {
-      console.log("error", err);
-      return res.sendStatus(403);
+    if (!authHeader) {
+      return res.status(401).json({ error: "Token no proporcionado" });
     }
-    next();
-  });
+
+    const token = authHeader.split(" ")[1]; // "Bearer <token>"
+    if (!token) {
+      return res.status(401).json({ error: "Formato de token inválido" });
+    }
+
+    jwt.verify(token, process.env.JWT_SECRET, (err, decoded) => {
+      if (err) {
+        console.error("Error verificando token:", err);
+        return res.status(403).json({ error: "Token inválido o expirado" });
+      }
+
+      req.user = decoded; // Guardamos los datos del payload
+      next();
+    });
+  } catch (error) {
+    console.error("Error en auth middleware:", error);
+    res.status(500).json({ error: "Error interno del servidor" });
+  }
 };

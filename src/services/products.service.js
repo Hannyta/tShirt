@@ -17,5 +17,5 @@ export const createProduct = async (newProduct) => {
 }
 
 export const deleteProduct = async (id) => {
-    return await Model.deleteproduct(id);
+    return await Model.deleteProduct(id);
 }

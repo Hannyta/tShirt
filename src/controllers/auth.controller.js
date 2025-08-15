@@ -18,6 +18,6 @@ export const login = async (req, res) => {
     const token = jwt.sign(payload, process.env.JWT_SECRET, expiration);
     res.json({ token });
   } else {
-    res.sendStatus(401).json({error: 'Sus credenciales no coinciden ....'})
+    res.status(401).json({ error: 'Sus credenciales no coinciden...' });
   }
 };

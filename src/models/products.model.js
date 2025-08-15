@@ -22,7 +22,7 @@ export const getAllProducts = async () => {
     }));
     return products;
   } catch (error) {
-    console.error(error);
+    console.error("Error al obtener productos:", error);
   }
 };
 
@@ -37,7 +37,7 @@ export const getProductById = async (id) => {
       return null;
     }
   } catch (error) {
-    console.error(error);
+    console.error(`Error al obtener producto con ID ${id}:`, error);
   }
 };
 
@@ -48,7 +48,7 @@ export const updateProduct = async (id, updateProductData) => {
     await setDoc(docRef, updateProductData, {merge: true});
     return {id, ...updateProductData};
   } catch (error) {
-    console.error(error);
+    console.error(`Error al actualizar producto con ID ${id}:`, error);
     return null;
   }
 };
@@ -56,27 +56,28 @@ export const updateProduct = async (id, updateProductData) => {
 //POST
 export const createProduct = async (newProduct) => {
   try {
-    // referencia al documento con tu id
-    const docRef = doc(productsCollection, newProduct.id);
+    if (newProduct.id) {
 
-    // setear el documento
-    await setDoc(docRef, newProduct);
-
-    // const docRef = await addDoc(productsCollection, newProduct);
-    return { id: docRef.id, ...newProduct };
+      const docRef = doc(productsCollection, newProduct.id);
+      await setDoc(docRef, newProduct);
+      return { id: newProduct.id, ...newProduct };
+    } else {
+      const docRef = await addDoc(productsCollection, newProduct);
+      return { id: docRef.id, ...newProduct };
+    }
   } catch (error) {
-    console.error(error);
+    console.error("Error al crear producto:", error);
   }
 };
 
 //DELETE
-export const deleteproduct = async (id) => {
+export const deleteProduct = async (id) => {
   try {
     const docRef = doc (productsCollection, id);
     await deleteDoc(docRef);
     return true;
   } catch (error) {
-    console.error(error);
+    console.error(`Error al eliminar producto con ID ${id}:`, error);
     return false;
   }
 };

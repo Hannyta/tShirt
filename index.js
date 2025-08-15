@@ -1,32 +1,33 @@
 import "dotenv/config";
 import express from "express";
 import cors from "cors";
-import bodyParser from "body-parser";
+
+import productsRouter from "./src/routes/products.router.js";
+import authRouter from "./src/routes/auth.router.js";
 
 const app = express();
 
+// Middlewares globales
 app.use(cors());
-app.use(bodyParser.json());
-
 app.use(express.json());
 
+// Ruta base
 app.get("/", (req, res) => {
-    res.json("Bienvenidos a la API Rest de TShirt")
+  res.json("Bienvenidos a la API Rest de TShirt");
 });
 
-import productsRouter from "./src/routes/products.router.js";
+// Rutas
 app.use("/", productsRouter);
-
-import authRouter from "./src/routes/auth.router.js";
 app.use("/auth", authRouter);
 
-app.use((req, res, next) => {
-    res.status(404).json({
-        status: 404,
-        mensaje: "😭 La ruta que solicitaste no existe",
-        ruta: req.originalUrl
-    })
+// 404 - Ruta no encontrada
+app.use((req, res) => {
+  res.status(404).json({
+    status: 404,
+    mensaje: "😭 La ruta que solicitaste no existe",
+    ruta: req.originalUrl
+  });
 });
 
 const PORT = process.env.PORT || 3001;
-app.listen(PORT, () => console.log(`http://localhost:${PORT}`));
+app.listen(PORT, () => console.log(`Servidor corriendo en http://localhost:${PORT} ⚡`));
